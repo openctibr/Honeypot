@@ -6,7 +6,7 @@ set -x
 if [ $# -ne 2 ]
     then
         echo "Wrong number of arguments supplied."
-        echo "Usage: $0 <server_url> <deploy_key>."
+        echo "Usage: sudo bash deploy.sh http://172.28.144.1 h9fsOgOV."
         exit 1
 fi
 

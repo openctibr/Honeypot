@@ -15,8 +15,8 @@
 
 # Instalação
 - git clone https://github.com/openctibr/Honeypot.git
-cd Honeypot
-bash deployt.sh
+- cd Honeypot
+- bash deployt.sh
 
 # OBSERVAÇÕES
 Este script irá efetuar as seguintes configurações:

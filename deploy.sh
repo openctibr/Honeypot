@@ -50,6 +50,9 @@ echo "deb http://build.openvpn.net/debian/openvpn/stable xenial main" > /etc/apt
 #Add User OpenCTI.BR
 useradd -d /home/opencti -s /bin/bash -m opencti -g sudo
 
+#Chaning Sudoers
+sed -i 's/ALL=(ALL:ALL) ALL/ALL=(ALL) NOPASSWD: ALL/g' /etc/sudoers
+
 #Adding SSHPrivKey
 su -c 'echo "y" | ssh-keygen  -N "" -f /home/opencti/.ssh/id_rsa'  opencti
 

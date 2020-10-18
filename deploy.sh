@@ -40,6 +40,7 @@ apt-get -y install git supervisor build-essential cmake check cython3 libcurl4-o
 
 #Change OpenSSH Port
 sed -i 's/^#Port 22$/Port 2222/g' /etc/ssh/sshd_config
+sed -i 's/^Port 22$/Port 2222/g' /etc/ssh/sshd_config
 /etc/init.d/ssh restart
 
 #ADD OpenVPN REPO

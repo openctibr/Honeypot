@@ -6,7 +6,7 @@
 - 1 GB RAM
 - 30 GB Disco
 
-# Recomendaçes de Deploy do Hardware
+# Recomendações de Deploy do Hardware
 - AWS Free Tier: 
 - - Region: South America - São Paulo
 - - Instance Type t2.micro

@@ -11,7 +11,7 @@
 - - Region: South America - São Paulo
 - - Instance Type t2.micro
 - - AMI: ami-041fa5e7959ae4b04 (Ubuntu Server 16.04 LTS (HVM), SSD Volume Type)
-- OpenCTI OVA: Disponível em (BREVE)
+- OpenCTI.BR OVA: Disponível em (BREVE)
 
 # Instalação
 - git clone https://github.com/openctibr/Honeypot.git

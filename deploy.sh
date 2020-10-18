@@ -308,6 +308,9 @@ source cowrie-env/bin/activate
 # Could not find a version that satisfies the requirement csirtgsdk (from -r requirements.txt (line 10)) (from versions: 0.0.0a5, 0.0.0a6, 0.0.0a5.linux-x86_64, 0.0.0a6.linux-x86_64, 0.0.0a3)
 
 python -m pip install "setuptools<45"
+easy_install distribute
+pip install --upgrade distribute
+pip install --upgrade pip
 pip install -U pip
 pip install -U setuptools wheel
 pip install csirtgsdk==0.0.0a6

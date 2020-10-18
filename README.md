@@ -11,7 +11,7 @@
   - Region: South America - São Paulo
   - Instance Type t2.micro
   - AMI: ami-041fa5e7959ae4b04 (Ubuntu Server 16.04 LTS (HVM), SSD Volume Type)
-- OpenCTI.BR OVA: Disponível em (BREVE)
+- OpenCTI.BR OVA: Disponível em https://www.dropbox.com/s/nw4hg33bcdp4ppd/OpenCTI_HoneyPot_Sensor_v1.OVA?dl=1
 
 # Requisitos de Rede
 - A porta de Acesso Remoto (SSH) será alterada para 2222/TCP, portanto esta porta você deverá configurar com as restrições de acesso de sua escolha.

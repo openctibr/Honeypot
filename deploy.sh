@@ -23,7 +23,7 @@ Projeto
 EOF
 
 
-sleep 20
+sleep 5
 
 
 

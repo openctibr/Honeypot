@@ -13,6 +13,10 @@
   - AMI: ami-041fa5e7959ae4b04 (Ubuntu Server 16.04 LTS (HVM), SSD Volume Type)
 - OpenCTI.BR OVA: Disponível em (BREVE)
 
+# Requisitos de Rede
+- A porta de Acesso Remoto (SSH) será alterada para 2222/TCP, portanto esta porta você deverá configurar com as restrições de acesso de sua escolha.
+- TODAS AS OUTRAS PORTAS TCP e UDP deverão estar liberadas de forma IRRESTRITA para que os sensores possam coletar o máximo possível de informações.
+
 # Instalação
 - git clone https://github.com/openctibr/Honeypot.git
 - cd Honeypot

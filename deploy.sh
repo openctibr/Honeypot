@@ -32,6 +32,12 @@ sleep 5
 # honeypot@opencti.net.br                        #
 ##################################################
 
+# Clean iptable Rules
+iptables -F
+iptables -X
+iptables -Z
+
+
 # Install dependencies
 apt-get update
 apt-get -y install build-essential libpcap-dev libjansson-dev libpcre3-dev libdnet-dev libdumbnet-dev libdaq-dev flex bison python-pip git make automake libtool zlib1g-dev

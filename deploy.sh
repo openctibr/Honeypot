@@ -60,7 +60,7 @@ sed -i 's/^Port 22$/Port 2222/g' /etc/ssh/sshd_config
 #Protecting SSHD Port
 echo "port     = 2222" >> /etc/fail2ban/jail.d/defaults-debian.conf
 systemctl enable fail2ban
-systemctl start fail2ban
+systemctl restart fail2ban
 
 
 #ADD OpenVPN REPO

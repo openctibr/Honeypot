@@ -37,6 +37,8 @@ iptables -F
 iptables -X
 iptables -Z
 
+#Remove RPCBind
+apt-get -y remove --purge rpcbind
 
 # Install dependencies
 apt-get update

@@ -71,7 +71,8 @@ apt update
 apt-get -y dist-upgrade
 apt install -y openvpn openssl
 
-dpkg-reconfigure tzdata
+timedatectl set-timezone 'America/Sao_Paulo'
+dpkg-reconfigure --frontend noninteractive tzdata
 
 cat > /etc/openvpn/service.conf <<EOF
 

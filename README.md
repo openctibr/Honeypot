@@ -11,6 +11,12 @@
   - Region: South America - São Paulo
   - Instance Type t2.micro
   - AMI: ami-041fa5e7959ae4b04 (Ubuntu Server 16.04 LTS (HVM), SSD Volume Type)
+  - Security Group: *FULL ACCESS*
+- Oracle OCI Free Tier:
+  - Region: Brazil East - São Paulo
+  - Instance Type: VM.Standard.E2.1.Micro
+  - Image: Canonical Ubuntu 16.04 Minimal
+  - Use network security groups to control traffic: No
 - OpenCTI.BR OVA: Disponível em https://www.dropbox.com/s/kgc1lmwcjfrpilj/OpenCTIBR_HoneyPot_Sensor_v1.OVA?dl=1
 
 # Requisitos de Rede

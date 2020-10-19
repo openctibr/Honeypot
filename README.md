@@ -15,7 +15,7 @@
 - Oracle OCI Free Tier:
   - Region: Brazil East - São Paulo
   - Instance Type: VM.Standard.E2.1.Micro
-  - Image: Canonical Ubuntu 16.04 Minimal
+  - Image: Canonical Ubuntu 16.04
   - Use network security groups to control traffic: No
 - OpenCTI.BR OVA: Disponível em https://www.dropbox.com/s/kgc1lmwcjfrpilj/OpenCTIBR_HoneyPot_Sensor_v1.OVA?dl=1
 

@@ -18,6 +18,7 @@
 - TODAS AS OUTRAS PORTAS TCP e UDP deverão estar liberadas de forma IRRESTRITA para que os sensores possam coletar o máximo possível de informações.
 
 # Instalação
+- apt install git
 - git clone https://github.com/openctibr/Honeypot.git
 - cd Honeypot
 - bash deploy.sh

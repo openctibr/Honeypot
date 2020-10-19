@@ -40,14 +40,26 @@ iptables -Z
 
 # Install dependencies
 apt-get update
-apt-get -y install build-essential libpcap-dev libjansson-dev libpcre3-dev libdnet-dev libdumbnet-dev libdaq-dev flex bison python-pip git make automake libtool zlib1g-dev
+apt-get -y install build-essential libpcap-dev dialog rsyslog libjansson-dev libpcre3-dev libdnet-dev libdumbnet-dev libdaq-dev flex bison python-pip git make automake libtool zlib1g-dev
 apt-get -y install python-dev git supervisor authbind openssl python-virtualenv build-essential python-gmpy2 libgmp-dev libmpfr-dev libmpc-dev libssl-dev python-pip libffi-dev
 apt-get -y install git supervisor build-essential cmake check cython3 libcurl4-openssl-dev libemu-dev libev-dev libglib2.0-dev libloudmouth1-dev libnetfilter-queue-dev libnl-3-dev libpcap-dev libssl-dev libtool libudns-dev python3 python3-dev python3-bson python3-yaml python3-boto3 supervisor
+
+#Creating LOG
+su -c "echo ." root
+
+# Installing Fail2Ban
+apt-get -y install fail2ban
 
 #Change OpenSSH Port
 sed -i 's/^#Port 22$/Port 2222/g' /etc/ssh/sshd_config
 sed -i 's/^Port 22$/Port 2222/g' /etc/ssh/sshd_config
 /etc/init.d/ssh restart
+
+#Protecting SSHD Port
+echo "port     = 2222" >> /etc/fail2ban/jail.d/defaults-debian.conf
+systemctl enable fail2ban
+systemctl start fail2ban
+
 
 #ADD OpenVPN REPO
 curl -s https://swupdate.openvpn.net/repos/repo-public.gpg | apt-key add -

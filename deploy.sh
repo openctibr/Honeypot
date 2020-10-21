@@ -44,7 +44,7 @@ apt-get -y remove --purge rpcbind
 apt-get update
 apt-get -y install build-essential libpcap-dev dialog rsyslog libjansson-dev libpcre3-dev libdnet-dev libdumbnet-dev libdaq-dev flex bison python-pip git make automake libtool zlib1g-dev
 apt-get -y install python-dev git supervisor authbind openssl python-virtualenv build-essential python-gmpy2 libgmp-dev libmpfr-dev libmpc-dev libssl-dev python-pip libffi-dev
-apt-get -y install git golang supervisor build-essential cmake check cython3 libcurl4-openssl-dev libemu-dev libev-dev libglib2.0-dev libloudmouth1-dev libnetfilter-queue-dev libnl-3-dev libpcap-dev libssl-dev libtool libudns-dev python3 python3-dev python3-bson python3-yaml python3-boto3 supervisor
+apt-get -y install git python-pip supervisor golang build-essential cmake check cython3 libcurl4-openssl-dev libemu-dev libev-dev libglib2.0-dev libloudmouth1-dev libnetfilter-queue-dev libnl-3-dev libpcap-dev libssl-dev libtool libudns-dev python3 python3-dev python3-bson python3-yaml python3-boto3 supervisor
 
 #Creating LOG
 su -c "echo ." root
@@ -458,6 +458,82 @@ EOF
 supervisorctl update
 cd ..
 
+mkdir amun
+cd amun
+
+##########################################################
+# Instalacao Honeypot Amun - Projeto Opencti.BR #
+# honeypot@opencti.net.br                                #
+##########################################################
+
+
+server_url=http://172.28.144.1
+deploy_key=h9fsOgOV
+
+apt-get update
+apt-get -y install git python-pip supervisor
+
+# Get the Amun source
+cd /opt
+git clone https://github.com/zeroq/amun.git
+cd amun
+AMUN_HOME=/opt/amun 
+
+# Configure Amun (disable vuln-http, too many false alarms here)
+sed -i 's/ip: 127.0.0.1/ip: 0.0.0.0/g' conf/amun.conf
+sed -i 's/    vuln-http,/#   vuln-http,/g' conf/amun.conf
+sed -i 's/\tvuln-http\,/#       vuln-http\,/g' /opt/amun/conf/amun.conf
+sed -i 's/\tvuln-smb\,/#       vuln-smb\,/g' /opt/amun/conf/amun.conf
+sed -i 's/\tvuln-ftpd\,/#       vuln-ftpd\,/g' /opt/amun/conf/amun.conf
+sed -i 's/#vuln-realvnc\:/vuln-realvnc\:/g' /opt/amun/conf/amun.conf
+sed -i 's/\tvuln-iis\,/#\tvuln-iis/g' /opt/amun/conf/amun.conf
+sed -i 's/vuln-check\:/#vuln-check\:/g' /opt/amun/conf/amun.conf
+sed -i 's/\tvuln-check\,/#\tvuln-check/g' /opt/amun/conf/amun.conf
+sed -i 's/\tvuln-dcom\,/#\tvuln-dcom/g' /opt/amun/conf/amun.conf
+sed -i 's/\tvuln-wins\,/#\tvuln-wins/g' /opt/amun/conf/amun.conf
+sed -i 's/vuln-msmq\,/vuln-msmq\,\n\tvuln-realvnc\,/g' /opt/amun/conf/amun.conf
+sed -i $'s/log_modules:/log_modules:\\\n    log-hpfeeds/g' conf/amun.conf
+
+# Modify Ubuntu to accept more open files
+echo "104854" > /proc/sys/fs/file-max
+ulimit -Hn 104854
+ulimit -n 104854
+
+# Register the sensor with the MHN server.
+wget $server_url/static/registration.txt -O registration.sh
+chmod 755 registration.sh
+# Note: this will export the HPF_* variables
+. ./registration.sh $server_url $deploy_key "amun"
+
+# Setup HPFeeds
+cat > /opt/amun/conf/log-hpfeeds.conf <<EOF
+
+[database_hpfeeds]
+server = $HPF_HOST
+port = $HPF_PORT
+identifier = $HPF_IDENT
+secret = $HPF_SECRET
+debug = 0
+
+EOF
+
+
+# Config for supervisor.
+cat > /etc/supervisor/conf.d/amun.conf <<EOF
+[program:amun]
+command=$AMUN_HOME/amun_server.py 
+directory=/opt/amun
+stdout_logfile=/opt/amun/amun.out
+stderr_logfile=/opt/amun/amun.err
+autostart=true
+autorestart=true
+redirect_stderr=true
+stopsignal=QUIT
+EOF
+
+supervisorctl update
+
+cd ..
 
 mkdir snort
 cd snort

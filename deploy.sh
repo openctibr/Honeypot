@@ -44,7 +44,7 @@ apt-get -y remove --purge rpcbind
 apt-get update
 apt-get -y install build-essential libpcap-dev dialog rsyslog libjansson-dev libpcre3-dev libdnet-dev libdumbnet-dev libdaq-dev flex bison python-pip git make automake libtool zlib1g-dev
 apt-get -y install python-dev git supervisor authbind openssl python-virtualenv build-essential python-gmpy2 libgmp-dev libmpfr-dev libmpc-dev libssl-dev python-pip libffi-dev
-apt-get -y install git supervisor build-essential cmake check cython3 libcurl4-openssl-dev libemu-dev libev-dev libglib2.0-dev libloudmouth1-dev libnetfilter-queue-dev libnl-3-dev libpcap-dev libssl-dev libtool libudns-dev python3 python3-dev python3-bson python3-yaml python3-boto3 supervisor
+apt-get -y install git golang supervisor build-essential cmake check cython3 libcurl4-openssl-dev libemu-dev libev-dev libglib2.0-dev libloudmouth1-dev libnetfilter-queue-dev libnl-3-dev libpcap-dev libssl-dev libtool libudns-dev python3 python3-dev python3-bson python3-yaml python3-boto3 supervisor
 
 #Creating LOG
 su -c "echo ." root
@@ -382,6 +382,80 @@ EOF
 
 supervisorctl update
 
+cd ..
+
+
+mkdir elastic
+cd elastic
+##########################################################
+# Instalacao Honeypot ElasticSearch - Projeto Opencti.BR #
+# honeypot@opencti.net.br                                #
+##########################################################
+
+
+server_url=http://172.28.144.1
+deploy_key=h9fsOgOV
+
+apt-get update
+apt-get -y install git golang supervisor
+
+
+# Get the elastichoney source
+cd /opt
+git clone https://github.com/pwnlandia/elastichoney.git
+cd elastichoney
+
+export GOPATH=/opt/elastichoney
+go get || true
+go build
+
+# Register the sensor with the MHN server.
+wget $server_url/static/registration.txt -O registration.sh
+chmod 755 registration.sh
+# Note: this will export the HPF_* variables
+. ./registration.sh $server_url $deploy_key "elastichoney"
+
+cat > config.json<<EOF
+{
+    "logfile" : "/opt/elastichoney/elastichoney.log",
+    "use_remote" : false,
+    "remote" : {
+        "url" : "http://example.com",
+        "use_auth" : false,
+        "auth" : {
+            "username" : "",
+            "password" : ""
+        }
+    },
+    "hpfeeds": {
+        "enabled": true,
+        "host": "$HPF_HOST",
+        "port": $HPF_PORT,
+        "ident": "$HPF_IDENT",
+        "secret": "$HPF_SECRET",
+        "channel": "elastichoney.events"
+    },
+    "instance_name" : "Green Goblin",
+    "anonymous" : false,
+    "spoofed_version"  : "1.4.1",
+    "public_ip_url": "http://icanhazip.com"
+}
+EOF
+
+# Config for supervisor.
+cat > /etc/supervisor/conf.d/elastichoney.conf <<EOF
+[program:elastichoney]
+command=/opt/elastichoney/elastichoney
+directory=/opt/elastichoney
+stdout_logfile=/opt/elastichoney/elastichoney.out
+stderr_logfile=/opt/elastichoney/elastichoney.err
+autostart=true
+autorestart=true
+redirect_stderr=true
+stopsignal=QUIT
+EOF
+
+supervisorctl update
 cd ..
 
 

@@ -39,3 +39,5 @@ Este script irá efetuar as seguintes configurações:
   - Cowrie (HoneyPot para Detecção de Bruteforce de Autenticação SSH)
   - Dioneaa (HoneyPot para Captura de Samples de Malware)
   - Snort (HoneyPot para Captura de Tentativas de Exploração de Serviços)
+  - ElasticHoney (HoneyPot para Detecção de Exploração de Comandos para detecção de possíveis Data Crawlers de ElasticSearch)
+  - Amun (HoneyPot para detecção de Exploração de outros Protocolos em geral)

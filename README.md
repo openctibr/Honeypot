@@ -17,7 +17,7 @@
   - Instance Type: VM.Standard.E2.1.Micro
   - Image: Canonical Ubuntu 16.04
   - Use network security groups to control traffic: No
-   - Não esqueça de Criar um Security List para o Sensores permitindo *FULL ACCESS*
+    - Não esqueça de Criar um Security List para o Sensores permitindo *FULL ACCESS*
 - OpenCTI.BR OVA: Disponível em https://www.dropbox.com/s/kgc1lmwcjfrpilj/OpenCTIBR_HoneyPot_Sensor_v1.OVA?dl=1
 
 # Requisitos de Rede

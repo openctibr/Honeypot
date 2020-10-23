@@ -276,6 +276,24 @@ EOF
 
 supervisorctl update
 
+cd /etc/logrotate.d/
+cat > dionaea << EOF
+#!/bin/bash
+if [ -s "/opt/dionaea/var/log/dionaea/dionaea.log" ]
+then
+
+rm /opt/dionaea/var/log/dionaea/dionaea.log
+rm /opt/dionaea/var/log/dionaea/dionaea-errors.log
+supervisorctl restart dionaea
+
+else
+         echo "Your file is empty"
+fi
+EOF
+
+echo "00 23   * * *   root 	/etc/logrotate.d/dionaea" >> /etc/crontab
+
+
 cd ..
 mkdir cowrie
 cd cowrie

@@ -30,7 +30,7 @@
 - cd Honeypot
 - bash deploy.sh
 
-# OBSERVAÇÕES
+# Observações
 Este script irá efetuar as seguintes configurações:
 - Criação de usuario "opencti"
 - Alteração da Porta de Serviço SSH de 22 para 2222

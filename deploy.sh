@@ -293,6 +293,7 @@ EOF
 
 echo "00 23   * * *   root 	/etc/logrotate.d/dionaea" >> /etc/crontab
 
+chmod 755 /etc/logrotate.d/dionaea
 
 cd ..
 mkdir cowrie

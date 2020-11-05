@@ -18,7 +18,7 @@
   - Image: Canonical Ubuntu 16.04
   - Use network security groups to control traffic: No
     - Não esqueça de Criar um Security List para o Sensores permitindo *FULL ACCESS*
-- OpenCTI.BR OVA: Disponível em https://www.dropbox.com/s/kgc1lmwcjfrpilj/OpenCTIBR_HoneyPot_Sensor_v1.OVA?dl=1
+- OpenCTI.BR OVA: Disponível em https://webftp.opencti.net.br/index.php/s/n26vMJU3DImQP02/download
 
 # Requisitos de Rede
 - A porta de Acesso Remoto (SSH) será alterada para 2222/TCP, portanto esta porta você deverá configurar com as restrições de acesso de sua escolha.

@@ -299,7 +299,7 @@ chmod 755 /etc/logrotate.d/dionaea
 
 cd ..
 _result=$(cat /etc/passwd| grep cowrie | wc -l)
-if [ $_result -neq 0 ]
+if [ $_result -ne 0 ]
 then
 	userdel -r cowrie
 fi

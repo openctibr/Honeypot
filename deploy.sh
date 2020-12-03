@@ -25,7 +25,9 @@ EOF
 
 sleep 5
 
-
+supervisorctl stop all
+rm -rf /opt/*
+rm -rf /etc/supervisor/conf.d/*
 
 ##################################################
 # Instalacao do cliente OpenVPN em Ubuntu 16.04  #

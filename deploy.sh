@@ -296,7 +296,11 @@ echo "00 23   * * *   root 	/etc/logrotate.d/dionaea" >> /etc/crontab
 chmod 755 /etc/logrotate.d/dionaea
 
 cd ..
-userdel -r cowrie
+_result=$(cat /etc/passwd| grep cowrie | wc -l)
+if [ $_result -neq 0 ]
+then
+	userdel -r cowrie
+fi
 rm -rf cowrie
 mkdir cowrie
 cd cowrie

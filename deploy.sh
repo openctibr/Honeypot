@@ -25,7 +25,7 @@ EOF
 
 sleep 5
 
-if [ -d "/opt/Honeypot" ] 
+if [ -d "/opt/dionaea" ] 
 then
     supervisorctl stop all
     rm -rf /opt/*

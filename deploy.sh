@@ -25,9 +25,12 @@ EOF
 
 sleep 5
 
-supervisorctl stop all
-rm -rf /opt/*
-rm -rf /etc/supervisor/conf.d/*
+if [ -d "/opt/Honeypot" ] 
+then
+    supervisorctl stop all
+    rm -rf /opt/*
+    rm -rf /etc/supervisor/conf.d/*
+fi
 
 ##################################################
 # Instalacao do cliente OpenVPN em Ubuntu 16.04  #

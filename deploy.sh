@@ -589,19 +589,6 @@ INTERFACE=$(basename -a /sys/class/net/e*)
 set -e
 set -x
 
-if [ $# -ne 2 ]
-    then
-        if [ $# -eq 3 ]
-          then
-            INTERFACE=$3
-          else
-            echo "Wrong number of arguments supplied."
-            echo "Usage: $0 <server_url> <deploy_key>."
-            exit 1
-        fi
-
-fi
-
 compareint=$(echo "$INTERFACE" | wc -w)
 
 

@@ -308,6 +308,78 @@ echo "00 23   * * *   root 	/etc/logrotate.d/dionaea" >> /etc/crontab
 
 chmod 755 /etc/logrotate.d/dionaea
 
+
+# Config for supervisor.
+cat > /opt/dionaea/etc/dionaea/services-enabled/blackhole.yaml <<EOF
+- name: blackhole
+  config:
+    services:
+      # Telnet
+      - port: 23
+        protocol: tcp
+
+      # DNS
+      - port: 53
+        protocol: udp
+      - port: 53
+        protocol: tcp
+
+      # NTP
+      - port: 123
+        protocol: udp
+
+      # LDAP
+      - port: 389
+        protocol: tcp
+
+      # http-proxy
+      - port: 8080
+        protocol: tcp
+
+      # https
+      - port: 8443
+        protocol: tcp
+
+      # proxy
+      - port: 3128
+        protocol: tcp
+
+      # ISAKMP
+      - port: 500
+        protocol: tcp
+	
+      # ISAKMP
+      - port: 500
+        protocol: udp
+
+      # OpenVPN
+      - port: 1194
+        protocol: tcp
+      
+      # OpenVPN
+      - port: 1194
+        protocol: udp
+      
+      # mDNS
+      - port: 5353
+        protocol: udp
+
+      # mDNS
+      - port: 5353
+        protocol: tcp
+	
+      # msrpc
+      - port: 135
+        protocol: tcp
+	
+      # netbios-ssn
+      - port: 139
+        protocol: tcp		
+EOF
+
+
+
+
 cd ..
 _result=$(cat /etc/passwd| grep cowrie | wc -l)
 if [ $_result -ne 0 ]

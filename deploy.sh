@@ -642,6 +642,7 @@ export CPPFLAGS=-I/include
 ./configure --prefix=/opt/suricata --localstatedir=/var/ --enable-non-bundled-htp 
 make
 make install-conf
+make install
 
 # Register the sensor with MHN server.
 wget $server_url/static/registration.txt -O registration.sh

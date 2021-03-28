@@ -374,7 +374,7 @@ cat > /opt/dionaea/etc/dionaea/services-enabled/blackhole.yaml <<EOF
 	
       # netbios-ssn
       - port: 139
-        protocol: tcp		
+        protocol: tcp
 EOF
 
 

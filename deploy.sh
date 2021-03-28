@@ -25,6 +25,14 @@ EOF
 
 sleep 5
 
+#Creating SWAP
+dd if=/dev/zero of=/swpfile bs=1M count=1024
+chmod 0600 /swpfile 
+mkswap /swpfile
+echo "/swpfile none swap defaults 0 0" >> /etc/fstab
+swapon -a
+
+
 if [ -d "/opt/dionaea" ] 
 then
     supervisorctl stop all

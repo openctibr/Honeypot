@@ -15,7 +15,7 @@ Projeto
 -----------------------------------------------------------------------------
 
 
- * Script de instalacao do OpenVPN e Honeypots: Dionea, Cowrie e Snort.
+ * Script de instalacao do OpenVPN e Honeypots: Dionea, Cowrie e Suricata.
  * Homologado em Ubuntu 16.04
  * honeypot@opencti.net.br | https://github.com/openctibr
 

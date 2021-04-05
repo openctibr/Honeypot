@@ -757,6 +757,11 @@ sed -i "s#    HOME_NET: \"\[192.168.0.0/16,10.0.0.0/8,172.16.0.0/12\]\"#    HOME
 rm -f /opt/suricata/etc/suricata/rules/local.rules
 ln -s /opt/mhn/rules/mhn-suricata.rules /opt/suricata/etc/suricata/rules/local.rules
 
+sed -i s/local\.rules/local\.rules\\n\ -\ snort\.rules/g  /opt/suricata/etc/suricata/suricata.yaml
+sed -i s/local\.rules/local\.rules\\n\ -\ opencti\.rules/g  /opt/suricata/etc/suricata/suricata.yaml
+touch /opt/suricata/etc/suricata/rules/snort.rules
+touch /opt/suricata/etc/suricata/rules/opencti.rules
+
 apt-get install -y supervisor
 
 # Config for supervisor.

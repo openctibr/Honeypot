@@ -13,9 +13,11 @@
   - AMI: ami-041fa5e7959ae4b04 (Ubuntu Server 16.04 LTS (HVM), SSD Volume Type)
   - Security Group: *FULL ACCESS*
 - Oracle OCI Free Tier:
-  - Region: Brazil East - São Paulo
+  - Region: 
+    - Brazil East - São Paulo
+    - Brazil Southeast - Vinhedo  -   
   - Instance Type: VM.Standard.E2.1.Micro
-  - Image: Canonical Ubuntu 16.04
+    - Image: Canonical Ubuntu 16.04
     - OCIDs: https://docs.oracle.com/en-us/iaas/images/image/5d9f589d-38a3-4eb0-9a25-6c74e6059122/
   - Use network security groups to control traffic: No
     - Não esqueça de Criar um Security List para o Sensores permitindo *FULL ACCESS*

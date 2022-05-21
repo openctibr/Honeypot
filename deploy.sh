@@ -402,8 +402,6 @@ cd cowrie
 server_url=http://172.28.144.1
 deploy_key=h9fsOgOV
 
-
-pip install -U supervisor
 /etc/init.d/supervisor start || true
 
 useradd -d /home/cowrie -s /bin/bash -m cowrie -g users

@@ -298,7 +298,7 @@ then
 
 rm /opt/dionaea/var/log/dionaea/dionaea.log
 rm /opt/dionaea/var/log/dionaea/dionaea-errors.log
-supervisorctl restart dionaea
+supervisorctl restart all
 
 else
          echo "Your file is empty"

@@ -32,7 +32,7 @@
 - apt install -y git
 - git clone https://github.com/openctibr/Honeypot.git
 - cd Honeypot
-- bash deploy.sh
+- bash deploy.sh or bash deploy18.04.sh
 
 # Observações
 Este script irá efetuar as seguintes configurações:

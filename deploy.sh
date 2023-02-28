@@ -407,14 +407,17 @@ deploy_key=h9fsOgOV
 useradd -d /home/cowrie -s /bin/bash -m cowrie -g users
 
 cd /opt
-git clone https://github.com/micheloosterhof/cowrie.git cowrie
-cd cowrie
+# git clone https://github.com/micheloosterhof/cowrie.git cowrie
+# cd cowrie
+wget https://github.com/cowrie/cowrie/archive/refs/tags/v2.5.0.zip
+unzip v2.5.0.zip
+cd cowrie-2.5.0
 
 # Most recent known working version
-git checkout 34f8464
+# git checkout 34f8464
 
 # Config for requirements.txt
-cat > /opt/cowrie/requirements.txt <<EOF
+cat > /opt/cowrie-2.5.0/requirements.txt <<EOF
 twisted>=17.1.0
 cryptography>=2.1
 configparser
@@ -437,13 +440,12 @@ source cowrie-env/bin/activate
 # Could not find a version that satisfies the requirement csirtgsdk (from -r requirements.txt (line 10)) (from versions: 0.0.0a5, 0.0.0a6, 0.0.0a5.linux-x86_64, 0.0.0a6.linux-x86_64, 0.0.0a3)
 
 python -m pip install "setuptools<45"
-easy_install distribute
-pip install --upgrade distribute
-pip install --upgrade pip
-pip install -U pip
-pip install -U setuptools wheel
-pip install csirtgsdk==0.0.0a6
-pip install -r requirements.txt 
+pip2 install pip==19.2.3
+pip2 install -U setuptools wheel
+easy_install-2.7 distribute
+pip2 install --upgrade distribute
+pip2 install csirtgsdk==0.0.0a6
+pip2 install -r requirements.txt 
 
 # Register sensor with MHN server.
 wget $server_url/static/registration.txt -O registration.sh

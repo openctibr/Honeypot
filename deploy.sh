@@ -411,13 +411,14 @@ cd /opt
 # cd cowrie
 wget https://github.com/cowrie/cowrie/archive/refs/tags/v2.5.0.zip
 unzip v2.5.0.zip
-cd cowrie-2.5.0
+mv cowrie-2.5.0 cowrie
+cd cowrie
 
 # Most recent known working version
 # git checkout 34f8464
 
 # Config for requirements.txt
-cat > /opt/cowrie-2.5.0/requirements.txt <<EOF
+cat > /opt/cowrie/requirements.txt <<EOF
 twisted>=17.1.0
 cryptography>=2.1
 configparser

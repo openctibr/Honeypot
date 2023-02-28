@@ -108,12 +108,11 @@ dev tun
 persist-tun
 persist-key
 cipher AES-128-CBC
-ncp-ciphers AES-128-GCM
 auth SHA256
 tls-client
 client
 resolv-retry infinite
-remote honeypotmanager.opencti.net.br 45782 tcp4
+remote honeypotmanager.opencti.net.br 45782 tcp
 verify-x509-name "VPN_HoneyPOT" name
 remote-cert-tls server
 passtos

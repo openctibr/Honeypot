@@ -108,6 +108,7 @@ dev tun
 persist-tun
 persist-key
 cipher AES-128-CBC
+tun-mtu 9000
 auth SHA256
 tls-client
 client

@@ -111,6 +111,7 @@ cipher AES-128-CBC
 ncp-ciphers AES-128-GCM
 auth SHA256
 tls-client
+tun-mtu 9000
 client
 resolv-retry infinite
 remote honeypotmanager.opencti.net.br 45782 tcp4

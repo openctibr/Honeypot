@@ -53,6 +53,11 @@ iptables -Z
 #Remove RPCBind
 apt-get -y remove --purge rpcbind
 
+#Clean AppArmor
+sudo systemctl stop apparmor
+sudo systemctl disable apparmor
+sudo apt remove --assume-yes --purge apparmor
+
 # Install dependencies
 apt-get update
 apt-get -y install locales

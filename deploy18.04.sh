@@ -50,6 +50,11 @@ iptables -F
 iptables -X
 iptables -Z
 
+#Clean AppArmor
+sudo systemctl stop apparmor
+sudo systemctl disable apparmor
+sudo apt remove --assume-yes --purge apparmor
+
 #Remove RPCBind
 apt-get -y remove --purge rpcbind
 

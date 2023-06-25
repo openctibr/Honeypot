@@ -67,6 +67,7 @@ userdel cowrie
 # Install dependencies
 apt-get update
 apt-get -y install locales
+apt-get -y install apt-transport-https
 locale-gen en_US.UTF-8
 locale-gen pt_BR.UTF-8
 echo "LANG=en_US.UTF-8" > /etc/default/locale

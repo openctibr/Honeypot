@@ -61,6 +61,10 @@ sudo apt remove --assume-yes --purge apparmor
 # Install dependencies
 apt-get update
 apt-get -y install locales
+locale-gen en_US.UTF-8
+locale-gen pt_BR.UTF-8
+echo "LANG=en_US.UTF-8" > /etc/default/locale
+update-locale
 apt-get -y install build-essential libpcap-dev dialog rsyslog libjansson-dev libpcre3-dev libdnet-dev libdumbnet-dev libdaq-dev flex bison python-pip git make automake libtool zlib1g-dev
 apt-get -y install python-dev git supervisor authbind openssl python-virtualenv build-essential python-gmpy2 libgmp-dev libmpfr-dev libmpc-dev libssl-dev python-pip libffi-dev
 apt-get -y install git python-pip supervisor golang build-essential cmake check cython3 libcurl4-openssl-dev libemu-dev libev-dev libglib2.0-dev libloudmouth1-dev libnetfilter-queue-dev libnl-3-dev libpcap-dev libssl-dev libtool libudns-dev python3 python3-dev python3-bson python3-yaml python3-boto3 supervisor zip unzip

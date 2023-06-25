@@ -58,6 +58,12 @@ sudo systemctl stop apparmor
 sudo systemctl disable apparmor
 sudo apt remove --assume-yes --purge apparmor
 
+#Clean
+rm -f /etc/supervisor/conf.d/* 
+dpkg -P supervisor
+dpkg -P fail2ban
+userdel cowrie
+
 # Install dependencies
 apt-get update
 apt-get -y install locales

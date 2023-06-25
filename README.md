@@ -20,7 +20,7 @@
     - Image: Canonical Ubuntu 16.04
     - - OCIDs: https://docs.oracle.com/en-us/iaas/images/image/5d9f589d-38a3-4eb0-9a25-6c74e6059122/
     - Image: Canonical Ubuntu 18.04
-    - - OCIDs: https://docs.oracle.com/en-us/iaas/images/image/5d9f589d-38a3-4eb0-9a25-6c74e6059122/
+    - - OCIDs: https://docs.oracle.com/en-us/iaas/images/image/58cc7d87-ae9b-4108-ab5a-e7946a2049cc/
   - Use network security groups to control traffic: No
     - Não esqueça de Criar um Security List para o Sensores permitindo *FULL ACCESS*
 - OpenCTI.BR OVA: Disponível em https://webftp.opencti.net.br/index.php/s/0RN1phyNeWVt0Ye/download

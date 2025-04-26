@@ -23,7 +23,7 @@
     - - OCIDs: https://docs.oracle.com/en-us/iaas/images/image/58cc7d87-ae9b-4108-ab5a-e7946a2049cc/
   - Use network security groups to control traffic: No
     - Não esqueça de Criar um Security List para o Sensores permitindo *FULL ACCESS*
-- OpenCTI.BR OVA: Disponível em https://webftp.opencti.net.br/index.php/s/0RN1phyNeWVt0Ye/download
+- OpenCTI.BR OVA: Disponível em http://webftp.opencti.net.br/index.php/s/0RN1phyNeWVt0Ye/download
 
 # Requisitos de Rede
 - A porta de Acesso Remoto (SSH) será alterada para 2222/TCP, portanto esta porta você deverá configurar com as restrições de acesso de sua escolha.
